@@ -11,3 +11,9 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'spring', group: :development
 
 gem 'haml-rails'
+gem 'autoprefixer-rails'
+gem 'font-awesome-rails'
+gem 'simple_form', '~> 3.1.0'
+gem 'mini_magick'
+gem 'carrierwave'
+gem 'devise'
