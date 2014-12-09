@@ -1,0 +1,26 @@
+%h2 Series
+
+%table.table.table-striped.table-bordered.table-responsive
+  %thead
+    %tr
+      %th Name
+      %th GP
+      %th Status
+      %th
+      %th Score
+      %th
+      %th Start Date
+      %th End Date
+  %tbody
+    - @series.each do |series|
+      %tr
+        %td= series.name.try(:titleize)
+        %td 5
+        %td Ongoing
+        %td.center-bold Tampa Bay
+        %td.center-bold 5-2
+        %td.center-bold Sam Jose
+        %td= series.created_at
+        %td 
+
+= link_to 'New Series', new_series_path, class: 'btn btn-default'
