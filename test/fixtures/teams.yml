@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  captain_id: 1
+  logo: MyString
+
+two:
+  name: MyString
+  captain_id: 1
+  logo: MyString
