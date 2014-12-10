@@ -1,17 +1,13 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+gretzky:
+  first_name: Wayne
+  last_name: Gretzky
+  number: 99
+  email: wayne@thegreatone.com
+  phone_number: 111-222-3333
 
-one:
-  first_name: MyString
-  last_name: MyString
-  number: 1
-  email: MyString
-  phone_number: MyString
-  profile: MyString
-
-two:
-  first_name: MyString
-  last_name: MyString
-  number: 1
-  email: MyString
-  phone_number: MyString
-  profile: MyString
+crosby:
+  first_name: Sydney
+  last_name: Crosby
+  number: 87
+  email: sid@thekid.com
+  phone_number: 111-222-3333
