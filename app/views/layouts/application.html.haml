@@ -7,37 +7,8 @@
     = javascript_include_tag 'application'
     = csrf_meta_tags
   %body
-    #navbar.navbar.navbar-inverse{ role: 'navigation' }
-      .container
-        .navbar-header
-          %button.navbar-toggle.collapsed{ data: { toggle: 'collapse', target: '#navbar-collapse' } }
-            %span.sr-only Toggle Navigation
-            %span.icon-bar
-            %span.icon-bar
-            %span.icon-bar
-          = link_to 'BeerLeague', root_path, class: 'navbar-brand'
-
-        .navbar-collapse.collapse#navbar-collapse
-          %ul.nav.navbar-nav.navbar-right
-            %li.dropdown
-              = link_to '#', class: 'dropdown-toggle', 
-                data: { toggle: 'dropdown' }, 
-                role: 'button', 
-                aria_expanded: false do
-                Series
-                %span.caret
-
-              %ul.dropdown-menu{ role: 'menu' }
-                %li= link_to 'Current Series', series_path(current_series)
-                %li= link_to 'All Series', series_index_path
-
-            %li= link_to 'Players', series_index_path
+    = render 'layouts/navbar'
 
     .container
-      - flash.each do |key, value|
-        - if key == 'notice'
-          .alert.alert-dismissable.alert-success= value
-        - else
-          .alert.alert-dismissable.alert-danger= value
-
+      = render 'layouts/alerts'
       = yield
