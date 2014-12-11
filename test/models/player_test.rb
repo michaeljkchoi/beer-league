@@ -34,6 +34,17 @@ class PlayerTest < ActiveSupport::TestCase
     assert_match /#{ player.last_name }/i, player.slug, 'Last name is missing in slug'
   end
 
+  test 'slug appends number if duplicate' do
+    impostor = Player.create(
+      first_name: players(:crosby).first_name,
+      last_name: players(:crosby).last_name,
+      email: players(:crosby).email,
+      number: 88
+    )
+    assert_not_equal players(:crosby).slug, impostor.slug, 'Slugs must be unique'
+    assert_match /88\z/, impostor.slug, 'Impostor number was not appended to slug'
+  end
+
   test 'slug is unique' do
     impostor = Player.create(
       first_name: players(:crosby).first_name,
