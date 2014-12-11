@@ -1,0 +1,15 @@
+= simple_form_for @player do |f|
+  = f.error_notification
+
+  .panel.panel-default
+    .panel-body
+      = f.input :first_name, autofocus: true
+      = f.input :last_name
+      = f.input :email
+      = f.input :phone_number
+      = f.input :number
+      = f.input :reserve, label: 'Is this player a reserve?'
+
+    .panel-footer
+      = f.button :submit
+      = link_to 'Cancel', players_path, class: 'btn btn-danger pull-right'
