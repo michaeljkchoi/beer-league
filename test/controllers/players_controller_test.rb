@@ -31,6 +31,7 @@ class PlayersControllerTest < ActionController::TestCase
   test "should show player" do
     get :show, id: @player
     assert_response :success
+    assert_select 'h2', @player.full_name
   end
 
   test "should get edit" do

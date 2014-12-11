@@ -16,7 +16,12 @@ class PlayerTest < ActiveSupport::TestCase
       last_name: 'Choi',
       email: 'mchoi@beerleague.com'
     )
-    assert_equal player.reserve, false, 'Default reserve attribute is incorrect'
+    assert_equal false, player.reserve, 'Default reserve attribute is incorrect'
+  end
+
+  test 'full name is correct' do
+    player = players(:crosby)
+    assert_equal 'Sidney Crosby', player.full_name, 'Full name method is incorrect'
   end
 
   test 'player not saved without first name' do
