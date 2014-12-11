@@ -1,33 +1,36 @@
 require 'test_helper'
 
 class PlayerTest < ActiveSupport::TestCase
-  test 'should not save player without first name' do
+  test 'player saved with all parameters' do
     player = Player.new(
-      last_name: players(:crosby).last_name,
-      number: players(:crosby).number,
-      email: players(:crosby).email,
-      phone_number: players(:crosby).phone_number
+      first_name: 'Michael',
+      last_name: 'Choi',
+      email: 'mchoi@beerleague.com'
     )
-    assert_not player.save, 'Saved player without first name'
+    assert player.save, 'Valid player was not saved'
   end
 
-  test 'should not save player without last name' do
-    player = Player.new(
-      first_name: players(:crosby).first_name,
-      number: players(:crosby).number,
-      email: players(:crosby).email,
-      phone_number: players(:crosby).phone_number
+  test 'default reserve attribute is false' do
+    player = Player.create(
+      first_name: 'Michael',
+      last_name: 'Choi',
+      email: 'mchoi@beerleague.com'
     )
-    assert_not player.save, 'Saved player without last name'
+    assert_equal player.reserve, false, 'Default reserve attribute is incorrect'
+  end
+
+  test 'player not saved without first name' do
+    player = Player.new(last_name: 'Choi', email: 'mchoi@beerleague.com')
+    assert_not player.save, 'Player without first name was saved'
+  end
+
+  test 'player not saved without last name' do
+    player = Player.new(first_name: 'Michael', email: 'mchoi@beerleague.com')
+    assert_not player.save, 'Player without last name was saved'
   end
 
   test 'should not save player without email' do
-    player = Player.new(
-      first_name: players(:crosby).first_name,
-      last_name: players(:crosby).last_name,
-      number: players(:crosby).number,
-      phone_number: players(:crosby).phone_number
-    )
-    assert_not player.save, 'Saved player without email'
+    player = Player.new(first_name: 'Michael', last_name: 'Choi')
+    assert_not player.save, 'Player without email was saved'
   end
 end

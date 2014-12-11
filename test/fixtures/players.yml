@@ -1,13 +1,15 @@
-gretzky:
-  first_name: Wayne
-  last_name: Gretzky
-  number: 99
-  email: wayne@thegreatone.com
-  phone_number: 111-222-3333
-
 crosby:
   first_name: Sydney
   last_name: Crosby
   number: 87
   email: sid@thekid.com
   phone_number: 111-222-3333
+  reserve: false
+
+gretzky:
+  first_name: Wayne
+  last_name: Gretzky
+  number: 99
+  email: wayne@thegreatone.com
+  phone_number: 111-222-3333
+  reserve: true
