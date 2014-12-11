@@ -24,6 +24,25 @@ class PlayerTest < ActiveSupport::TestCase
     assert_equal 'Sidney Crosby', player.full_name, 'Full name method is incorrect'
   end
 
+  test 'slug is correct' do
+    player = Player.create(
+      first_name: 'Michael',
+      last_name: 'Choi',
+      email: 'mchoi@beerleague.com'
+    )
+    assert_match /#{ player.first_name }/i, player.slug, 'First name is missing in slug'
+    assert_match /#{ player.last_name }/i, player.slug, 'Last name is missing in slug'
+  end
+
+  test 'slug is unique' do
+    impostor = Player.create(
+      first_name: players(:crosby).first_name,
+      last_name: players(:crosby).last_name,
+      email: players(:crosby).email
+    )
+    assert_not_equal players(:crosby).slug, impostor.slug, 'Slugs must be unique'
+  end
+
   test 'player not saved without first name' do
     player = Player.new(last_name: 'Choi', email: 'mchoi@beerleague.com')
     assert_not player.save, 'Player without first name was saved'

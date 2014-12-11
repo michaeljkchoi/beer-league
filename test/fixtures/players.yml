@@ -5,6 +5,7 @@ crosby:
   email: sid@thekid.com
   phone_number: 111-222-3333
   reserve: false
+  slug: sidney-crosby
 
 gretzky:
   first_name: Wayne
@@ -13,3 +14,4 @@ gretzky:
   email: wayne@thegreatone.com
   phone_number: 111-222-3333
   reserve: true
+  slug: wayne-gretzky
