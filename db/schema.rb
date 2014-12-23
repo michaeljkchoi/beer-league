@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141223214505) do
+ActiveRecord::Schema.define(version: 20141223214803) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -63,9 +63,11 @@ ActiveRecord::Schema.define(version: 20141223214505) do
     t.string   "logo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "series_id"
   end
 
   add_index "teams", ["captain_id"], name: "index_teams_on_captain_id", using: :btree
+  add_index "teams", ["series_id"], name: "index_teams_on_series_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
-  resources :series
+  resources :series do
+    resources :teams
+  end
+
   resources :players
 
   devise_for :users

@@ -1,7 +1,5 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+twentyfourteen:
+  name: '2014 Season'
 
-one:
-  name: MyString
-
-two:
-  name: MyString
+twentyfifteen:
+  name: '2015 Season'
