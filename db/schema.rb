@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141211064735) do
+ActiveRecord::Schema.define(version: 20141223214505) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -40,6 +40,16 @@ ActiveRecord::Schema.define(version: 20141211064735) do
   end
 
   add_index "players", ["slug"], name: "index_players_on_slug", unique: true, using: :btree
+
+  create_table "rosters", force: true do |t|
+    t.integer  "team_id"
+    t.integer  "player_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "rosters", ["player_id"], name: "index_rosters_on_player_id", using: :btree
+  add_index "rosters", ["team_id"], name: "index_rosters_on_team_id", using: :btree
 
   create_table "series", force: true do |t|
     t.string   "name"
