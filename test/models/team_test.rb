@@ -1,19 +1,21 @@
 require 'test_helper'
 
 class TeamTest < ActiveSupport::TestCase
-  test 'team saved with all parameters' do
-    team = Team.new(
-      name: 'Pittsburgh Penguins',
-      captain: players(:crosby),
+  test 'team validations' do
+    valid_team = Team.new(
+      name: 'Calgary Flames',
+      captain: players(:phaneuf),
       series_id: series(:twentyfourteen).id
     )
+    assert valid_team.save, 'Valid team was not saved'
 
-    assert team.save, 'Valid team was not saved'
-  end
+    missing_name = Team.new(
+      series_id: series(:twentyfourteen).id
+    )
+    assert_not missing_name.save, 'Team without a name was not saved'
 
-  test 'team is not saved without belonging to a series' do
-    team = Team.create(name: 'Ottawa Senators')
-    assert_not team.save, 'Team was saved without belonging to a series'
+    missing_series = Team.create(name: 'Ottawa Senators')
+    assert_not missing_series.save, 'Team was saved without belonging to a series'
   end
 
   test 'team name is unique for the series' do

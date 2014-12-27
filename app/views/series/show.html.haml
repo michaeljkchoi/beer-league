@@ -1,0 +1,22 @@
+%h2= @series.name
+
+%h3 Games
+%table.table.table-responsive.table-striped.table-bordered
+  %thead
+    %tr
+      %th #
+      %th Date
+      %th
+      %th Score
+      %th 
+  %tbody
+    %tr
+      %td 1
+      %td December 5, 2014
+      %td Alpha Team
+      %td 5-2
+      %td Bravo Team
+
+%h3 Teams
+- @teams.each do |team|
+  %table.table.table-responsive.table-striped.table-bordered

@@ -7,5 +7,5 @@ class Team < ActiveRecord::Base
   belongs_to :captain, class_name: 'Player'
 
   validates :series_id, presence: true
-  validates :name, uniqueness: { scope: :series_id }
+  validates :name, uniqueness: { scope: :series_id }, presence: true
 end

@@ -6,10 +6,12 @@ class SeriesController < ApplicationController
   end
 
   def show
+    @teams = @series.teams.joins(:players)
   end
 
   def new
     @series = Series.new
+    2.times { @series.teams.build }
   end
 
   def create

@@ -1,3 +1,13 @@
-= simple_form_for @series do |f|
+= simple_nested_form_for @series do |f|
+  = f.error_notification
+
   = f.input :name
+  .row
+    - @series.teams.each_with_index do |team, i|
+      = f.simple_fields_for :teams, team do |g|
+        .col-sm-6
+          %h3 Team #{ i + 1 }
+          = g.input :name
+          = g.input :logo
+
   = f.button :submit, class: 'btn btn-success'

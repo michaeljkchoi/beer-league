@@ -1,4 +1,9 @@
 toronto:
   name: Toronto Maple Leafs
-  captain: players(:crosby)
-  series: series(:twentyfourteen)
+  captain: phaneuf
+  series: twentyfourteen
+
+pittsburgh:
+  name: Pittsburgh Penguins
+  captain: crosby
+  series: twentyfourteen

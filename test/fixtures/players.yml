@@ -7,11 +7,11 @@ crosby:
   reserve: false
   slug: sidney-crosby
 
-gretzky:
-  first_name: Wayne
-  last_name: Gretzky
-  number: 99
-  email: wayne@thegreatone.com
+phaneuf:
+  first_name: Dion
+  last_name: Phaneuf
+  number: 3
+  email: dion@phaneuf.com
   phone_number: 111-222-3333
-  reserve: true
-  slug: wayne-gretzky
+  reserve: false
+  slug: dion-phaneuf
