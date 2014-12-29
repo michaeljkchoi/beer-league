@@ -13,9 +13,6 @@ class TeamTest < ActiveSupport::TestCase
       series_id: series(:twentyfourteen).id
     )
     assert_not missing_name.save, 'Team without a name was not saved'
-
-    missing_series = Team.create(name: 'Ottawa Senators')
-    assert_not missing_series.save, 'Team was saved without belonging to a series'
   end
 
   test 'team name is unique for the series' do

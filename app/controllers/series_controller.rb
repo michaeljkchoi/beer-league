@@ -50,7 +50,13 @@ class SeriesController < ApplicationController
     def series_params
       params.require(:series).permit(
         :id,
-        :name
+        :name,
+        teams_attributes: [
+          :id,
+          :_destroy,
+          :name,
+          :series
+        ]
       )
     end
 end
