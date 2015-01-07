@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  resources :series do
+  resources :series, shallow: true do
     resources :teams
   end
 

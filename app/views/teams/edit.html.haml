@@ -1,0 +1,14 @@
+%h2 Edit #{ @team.name.titleize }
+
+= simple_form_for @team do |f|
+  = f.error_notification
+
+  = f.input :name
+  = f.association :players, collection: @players,
+    as: :check_boxes,
+    label_method: :full_name
+
+  = f.button :submit
+
+= link_to 'Show', @team, class: 'btn btn-default'
+= link_to 'Back', series_teams_path(@series)

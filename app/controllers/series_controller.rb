@@ -6,7 +6,7 @@ class SeriesController < ApplicationController
   end
 
   def show
-    @teams = @series.teams.joins(:players)
+    @teams = @series.teams.includes(:players).limit(2)
   end
 
   def new

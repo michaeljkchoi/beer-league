@@ -1,0 +1,22 @@
+%h2= @team.name
+
+%h3 Players
+%table.table.table-responsive.table-striped.table-bordered
+  %thead
+    %tr
+      %th #
+      %th Full Name
+      %th Stats
+      %th
+  %tbody
+    - @team.players.each do |player|
+      %tr
+        %td= player.number
+        %td= player.full_name
+        %td stats
+        %td
+          = link_to 'View', player, class: 'btn btn-default btn-xs'
+          = link_to 'Edit', edit_player_path(player), class: 'btn btn-default btn-xs'
+
+= link_to 'Add Players', edit_team_path(@team), class: 'btn btn-default'
+= link_to 'Back', series_teams_path(@series), class: 'btn btn-default'

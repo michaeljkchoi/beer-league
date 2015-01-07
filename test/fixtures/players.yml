@@ -15,3 +15,12 @@ phaneuf:
   phone_number: 111-222-3333
   reserve: false
   slug: dion-phaneuf
+
+gretzky:
+  first_name: Wayne
+  last_name: Gretzky
+  number: 99
+  email: wayne@thegreatone.com
+  phone_number: 111-222-3333
+  reserve: true
+  slug: wayne-gretzky

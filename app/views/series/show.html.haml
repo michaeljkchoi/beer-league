@@ -13,12 +13,15 @@
     %tr
       %td 1
       %td December 5, 2014
-      %td Alpha Team
+      %td= @teams.first.name
       %td 5-2
-      %td Bravo Team
+      %td= @teams.last.name
 
 %h3 Teams
 .row
   - @teams.each do |team|
     .col-sm-6
-      %h3= team.name
+      %h4= link_to team.name, team
+      %ul
+        - team.players.each do |player|
+          %li #{ player.full_name } (#{ player.number })
