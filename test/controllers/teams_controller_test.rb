@@ -10,6 +10,9 @@ class TeamsControllerTest < ActionController::TestCase
     get :index, series_id: @series.id
     assert_response :success
     assert_not_nil assigns(:teams)
+    assert_equal 2, assigns(:teams).count, '@teams does not return the correct number of teams'
+    assert_includes assigns(:teams), teams(:toronto), '@teams does not include a team in the series'
+    assert_not_includes assigns(:teams), teams(:vancouver), '@teams includes a team from another series'
   end
 
   test "should show team" do
@@ -33,7 +36,6 @@ class TeamsControllerTest < ActionController::TestCase
     assert_difference('Team.count', -1) do
       delete :destroy, id: @team
     end
-
     assert_redirected_to series_teams_url(assigns(:series))
   end
 end

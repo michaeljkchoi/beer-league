@@ -1,9 +1,9 @@
 class TeamsController < ApplicationController
-  before_action :set_series, only: :index
   before_action :set_team, except: :index
 
   def index
-    @teams = Team.all
+    @series = Series.find(params[:series_id])
+    @teams = @series.teams.limit(2)
   end
 
   def show
@@ -31,10 +31,6 @@ class TeamsController < ApplicationController
   end
 
   private
-    def set_series
-      Series.find(params[:series_id])
-    end
-
     def set_team
       @team = Team.find(params[:id])
     end

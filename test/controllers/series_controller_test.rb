@@ -34,6 +34,9 @@ class SeriesControllerTest < ActionController::TestCase
     get :show, id: @series
     assert_response :success
     assert_select 'h2', @series.name
+    assert_equal 2, assigns(:teams).count, '@teams does not return the correct number of teams'
+    assert_includes assigns(:teams), teams(:toronto), '@teams does not include a team in the series'
+    assert_not_includes assigns(:teams), teams(:vancouver), '@teams includes a team from another series'
   end
 
   test "should get edit" do

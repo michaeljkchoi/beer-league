@@ -7,3 +7,8 @@ pittsburgh:
   name: Pittsburgh Penguins
   captain: crosby
   series: twentyfourteen
+
+vancouver:
+  name: Vancouver Canucks
+  captain: sedin
+  series: twentyfifteen
