@@ -1,0 +1,9 @@
+one:
+  series: twentyfourteen
+  home_team: toronto
+  away_team: pittsburgh
+
+two:
+  series: twentyfourteen
+  home_team: pittsburgh
+  away_team: toronto
