@@ -5,7 +5,8 @@ class GameTest < ActiveSupport::TestCase
     game = Game.new(
       series_id: series(:twentyfourteen).id,
       home_team_id: teams(:toronto).id,
-      away_team_id: teams(:pittsburgh).id
+      away_team_id: teams(:pittsburgh).id,
+      date: DateTime.now
     )
     assert game.save, 'Valid game was not saved'
     assert_equal teams(:toronto), game.home_team
@@ -16,6 +17,7 @@ class GameTest < ActiveSupport::TestCase
     game = Game.new()
     assert_not game.save, 'Invalid game saved'
     assert_equal "can't be blank", game.errors[:home_team].join(', '), 'No error for game without a home team'
-    assert_equal "can't be blank", game.errors[:away_team].join(', '), 'No error for game without a away team'
+    assert_equal "can't be blank", game.errors[:away_team].join(', '), 'No error for game without an away team'
+    assert_equal "can't be blank", game.errors[:date].join(', '), 'No error for game without a date'
   end
 end
