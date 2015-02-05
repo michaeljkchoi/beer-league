@@ -6,7 +6,7 @@ class GameTest < ActiveSupport::TestCase
       series_id: series(:twentyfourteen).id,
       home_team_id: teams(:toronto).id,
       away_team_id: teams(:pittsburgh).id,
-      date: DateTime.now
+      date: Time.zone.now
     )
     assert game.save, 'Valid game was not saved'
     assert_equal teams(:toronto), game.home_team
@@ -16,8 +16,19 @@ class GameTest < ActiveSupport::TestCase
   test 'invalid game' do
     game = Game.new()
     assert_not game.save, 'Invalid game saved'
-    assert_equal "can't be blank", game.errors[:home_team].join(', '), 'No error for game without a home team'
-    assert_equal "can't be blank", game.errors[:away_team].join(', '), 'No error for game without an away team'
-    assert_equal "can't be blank", game.errors[:date].join(', '), 'No error for game without a date'
+    assert_includes game.errors[:home_team], "can't be blank"
+    assert_includes game.errors[:away_team], "can't be blank"
+    assert_includes game.errors[:date], "can't be blank"
+  end
+
+  test 'teams are unique validation' do
+    game = Game.new(
+      series_id: series(:twentyfourteen).id,
+      home_team_id: teams(:toronto).id,
+      away_team_id: teams(:toronto).id,
+      date: Time.zone.now
+    )
+    assert_not game.save
+    assert_includes game.errors[:away_team], "is already the home team"
   end
 end

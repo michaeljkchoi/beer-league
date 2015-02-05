@@ -7,6 +7,7 @@ class SeriesController < ApplicationController
 
   def show
     @teams = @series.teams.includes(:players).limit(2)
+    @games = @series.games
   end
 
   def new

@@ -15,9 +15,9 @@ class PlayerTest < ActiveSupport::TestCase
   test 'invalid player' do
     player = Player.new()
     assert_not player.save, 'Invalid player saved'
-    assert_equal "can't be blank", player.errors[:first_name].join(', '), 'No error for player without a first name'
-    assert_equal "can't be blank", player.errors[:last_name].join(', '), 'No error for player without a last name'
-    assert_equal "can't be blank", player.errors[:email].join(', '), 'No error for player without an email'
+    assert_includes player.errors[:first_name], "can't be blank"
+    assert_includes player.errors[:last_name], "can't be blank"
+    assert_includes player.errors[:email], "can't be blank"
   end
 
   test 'slug is correct' do

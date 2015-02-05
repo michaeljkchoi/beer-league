@@ -1,9 +1,11 @@
 one:
+  date: <%= Time.zone.now.to_s(:db) %>
   series: twentyfourteen
   home_team: toronto
   away_team: pittsburgh
 
 two:
+  date: <%= Time.zone.now.to_s(:db) %>
   series: twentyfourteen
   home_team: pittsburgh
   away_team: toronto

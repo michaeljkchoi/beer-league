@@ -1,0 +1,22 @@
+= simple_form_for [@series, @game] do |f|
+  = f.error_notification
+
+  .panel.panel-default
+    .panel-body
+      = f.input :date, as: :date,
+        autofocus: true
+
+      .row
+        .col-sm-6
+          = f.association :home_team,
+            collection: @teams,
+            include_blank: false,
+            selected: @teams.first.id
+        .col-sm-6
+          = f.association :away_team,
+            collection: @teams,
+            include_blank: false,
+            selected: @teams.last.id
+
+    .panel-footer
+      = f.button :submit
