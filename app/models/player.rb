@@ -7,6 +7,7 @@ class Player < ActiveRecord::Base
   has_many :rosters
   has_many :teams, through: :rosters
   has_many :series, through: :teams
+  has_many :goals
 
   def full_name
     [self.first_name, self.last_name].reject(&:blank?).join(' ')

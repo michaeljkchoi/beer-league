@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150204223350) do
+ActiveRecord::Schema.define(version: 20150205063020) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -38,6 +38,23 @@ ActiveRecord::Schema.define(version: 20150204223350) do
   add_index "games", ["away_team_id"], name: "index_games_on_away_team_id", using: :btree
   add_index "games", ["home_team_id"], name: "index_games_on_home_team_id", using: :btree
   add_index "games", ["series_id"], name: "index_games_on_series_id", using: :btree
+
+  create_table "goals", force: true do |t|
+    t.integer  "game_id"
+    t.integer  "team_id"
+    t.integer  "scorer_id"
+    t.integer  "primary_assister_id"
+    t.integer  "secondary_assister_id"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "goals", ["game_id"], name: "index_goals_on_game_id", using: :btree
+  add_index "goals", ["primary_assister_id"], name: "index_goals_on_primary_assister_id", using: :btree
+  add_index "goals", ["scorer_id"], name: "index_goals_on_scorer_id", using: :btree
+  add_index "goals", ["secondary_assister_id"], name: "index_goals_on_secondary_assister_id", using: :btree
+  add_index "goals", ["team_id"], name: "index_goals_on_team_id", using: :btree
 
   create_table "players", force: true do |t|
     t.string   "first_name"

@@ -1,0 +1,14 @@
+one:
+  game: one
+  team: toronto
+  scorer: crosby
+  primary_assister: phaneuf
+  secondary_assister: gretzky
+  category: ESG
+
+two:
+  game: one
+  team: toronto
+  scorer: gretzky
+  primary_assister: crosby
+  category: PPG
