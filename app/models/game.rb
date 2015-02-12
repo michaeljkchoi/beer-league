@@ -14,4 +14,13 @@ class Game < ActiveRecord::Base
   def teams_are_unique
     errors.add(:away_team, 'is already the home team') if home_team_id == away_team_id
   end
+
+  def game_number
+    games = series.games.order(date: :asc)
+    return games.index(self) + 1
+  end
+
+  def goals_for(team)
+    goals.where(team: team).count
+  end
 end

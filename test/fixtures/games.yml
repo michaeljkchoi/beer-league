@@ -1,5 +1,5 @@
 one:
-  date: <%= Time.zone.now.to_s(:db) %>
+  date: <%= (Time.zone.now - 1.day).to_s(:db) %>
   series: twentyfourteen
   home_team: toronto
   away_team: pittsburgh

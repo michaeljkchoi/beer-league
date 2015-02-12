@@ -1,7 +1,9 @@
 Rails.application.routes.draw do
   resources :series, shallow: true do
     resources :teams
-    resources :games
+    resources :games do
+      resources :goals
+    end
   end
 
   resources :players

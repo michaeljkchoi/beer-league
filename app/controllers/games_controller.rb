@@ -8,6 +8,9 @@ class GamesController < ApplicationController
 
   def show
     @series = @game.series
+    @teams = @series.teams
+    @home = @game.home_team
+    @away = @game.away_team
   end
 
   def new

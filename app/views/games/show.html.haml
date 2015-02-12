@@ -1,4 +1,23 @@
-%h1 Game
+%h1 Game #{ @game.game_number } - #{ formatted_date @game.date }
+
+.row
+  .col-sm-6
+    = render 'teams/team_short', team: @home, type: 'home'
+
+  .col-sm-6
+    = render 'teams/team_short', team: @away, type: 'away'
+
+%table.table.table-responsive.table-striped.table-bordered
+  %thead
+    %tr
+      %th #
+      %th Time
+      %th Strength
+      %th Team
+      %th Goal Scorer
+      %th Assist
+      %th Assist
+      %th Actions
 
 = link_to 'Edit', edit_game_path(@game)
 = link_to 'Back', series_games_path(@series)

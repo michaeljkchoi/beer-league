@@ -4,11 +4,4 @@
 = render 'games/games_table'
 = link_to 'New Game', new_series_game_path(@series), class: 'btn btn-default'
 
-%h3 Teams
-.row
-  - @teams.each do |team|
-    .col-sm-6
-      %h4= link_to team.name, team
-      %ul
-        - team.players.each do |player|
-          %li #{ player.full_name } (#{ player.number })
+= render 'teams/teams_summary'

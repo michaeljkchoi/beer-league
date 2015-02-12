@@ -1,0 +1,8 @@
+%h3 Teams
+.row
+  - @teams.each do |team|
+    .col-sm-6
+      %h4= link_to team.name, team
+      %ul
+        - team.players.each do |player|
+          %li #{ player.full_name } (#{ player.number })

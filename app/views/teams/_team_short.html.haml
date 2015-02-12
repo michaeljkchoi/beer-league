@@ -1,0 +1,6 @@
+.text-center
+  %h3 #{ type.titleize } - #{ team.name }
+  - if team.logo.present?
+    = link_to team, class: 'thumbnail' do
+      = image_tag team.logo
+  %h2= @game.goals_for team
