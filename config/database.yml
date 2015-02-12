@@ -16,6 +16,6 @@ test:
 
 production:
   <<: *default
-  database: beer_league_production
-  username: beer_league
+  database: rails
+  username: rails
   password: <%= ENV['BEER_LEAGUE_DATABASE_PASSWORD'] %>
