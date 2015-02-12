@@ -14,7 +14,10 @@
         %td= i+1
         %td= formatted_date game.date
         %td= game.home_team.name
-        %td 5-2
+        %td 
+          = game.goals_for(game.home_team) 
+          \- 
+          = game.goals_for(game.away_team)
         %td= game.away_team.name
         %td
           = link_to 'View', game, class: 'btn btn-xs btn-default'

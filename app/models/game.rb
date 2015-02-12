@@ -11,6 +11,14 @@ class Game < ActiveRecord::Base
 
   validate :teams_are_unique, on: [:create, :update]
 
+  CATEGORY = {
+    ev: 'Even Strength Goal',
+    pp: 'Power Play Goal',
+    sh: 'Short Handed Goal',
+    ps: 'Penalty Shot Goal',
+    ot: 'Overtime Goal'
+  }
+
   def teams_are_unique
     errors.add(:away_team, 'is already the home team') if home_team_id == away_team_id
   end
@@ -22,5 +30,13 @@ class Game < ActiveRecord::Base
 
   def goals_for(team)
     goals.where(team: team).count
+  end
+
+  def teams
+    [home_team, away_team]
+  end
+
+  def players
+    [home_team.players, away_team.players].flatten!
   end
 end

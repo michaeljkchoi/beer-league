@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :series, shallow: true do
     resources :teams
     resources :games do
-      resources :goals
+      resources :goals, only: [:new, :create, :edit, :update, :destroy]
     end
   end
 

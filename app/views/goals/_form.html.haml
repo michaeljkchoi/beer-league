@@ -1,0 +1,32 @@
+= simple_form_for [@game, @goal] do |f|
+  = f.error_notification
+
+  .panel.panel-default
+    .panel-body
+      = f.association :team,
+        collection: @game.teams,
+        include_blank: false
+
+      .row
+        .col-sm-6
+          = f.association :scorer,
+            collection: @game.players,
+            label_method: :full_name,
+            include_blank: false
+          = f.input :category,
+            collection: Game::CATEGORY,
+            label_method: :last,
+            value_method: :first,
+            include_blank: false,
+            label: 'Type'
+
+        .col-sm-6
+          = f.association :primary_assister,
+            collection: @game.players,
+            label_method: :full_name
+          = f.association :secondary_assister,
+            collection: @game.players,
+            label_method: :full_name
+
+    .panel-footer
+      = f.button :submit
