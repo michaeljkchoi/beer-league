@@ -2,7 +2,7 @@ class SeriesController < ApplicationController
   before_action :set_series, only: [:show, :edit, :update, :destroy]
 
   def index
-    @series = Series.all
+    @series = Series.all.order(created_at: :desc)
   end
 
   def show

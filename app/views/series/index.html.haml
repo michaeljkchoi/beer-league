@@ -21,7 +21,11 @@
         %td.center-bold Tampa Bay
         %td.center-bold 5-2
         %td.center-bold Sam Jose
-        %td= series.created_at
+        %td
+          - if series.first_game.present?
+            = formatted_date series.first_game.date
+          - else
+            Not Started
         %td
         %td
           = link_to 'View', series, class: 'btn btn-default btn-xs'

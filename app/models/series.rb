@@ -10,4 +10,8 @@ class Series < ActiveRecord::Base
   def available_players
     Player.all - players
   end
+
+  def first_game
+    games.first
+  end
 end

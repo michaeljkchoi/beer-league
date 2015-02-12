@@ -20,4 +20,9 @@ class SeriesTest < ActiveSupport::TestCase
     assert_includes available, undrafted_player, 'Available players method does not include undrafted players'
     assert_kind_of Array, available, 'Available players method does not return array'
   end
+
+  test 'first game method' do
+    series = series(:twentyfourteen)
+    assert_equal games(:two), series.first_game
+  end
 end
