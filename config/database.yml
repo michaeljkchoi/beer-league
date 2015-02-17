@@ -16,7 +16,6 @@ test:
 
 production:
   <<: *default
-  host: 104.236.61.92
   socket: /var/run/mysqld/mysqld.sock
   database: rails
   username: root
