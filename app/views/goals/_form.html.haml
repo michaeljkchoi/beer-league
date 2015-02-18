@@ -4,13 +4,13 @@
   .panel.panel-default
     .panel-body
       = f.association :team,
-        collection: @game.teams,
+        collection: @teams,
         include_blank: false
 
       .row
         .col-sm-6
           = f.association :scorer,
-            collection: @game.players,
+            collection: @players,
             label_method: :full_name,
             include_blank: false
           = f.input :category,
@@ -22,10 +22,10 @@
 
         .col-sm-6
           = f.association :primary_assister,
-            collection: @game.players,
+            collection: @players,
             label_method: :full_name
           = f.association :secondary_assister,
-            collection: @game.players,
+            collection: @players,
             label_method: :full_name
 
     .panel-footer

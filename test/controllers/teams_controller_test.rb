@@ -1,7 +1,9 @@
 require 'test_helper'
+include Devise::TestHelpers
 
 class TeamsControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:one)
     @series = series(:twentyfourteen)
     @team = teams(:toronto)
   end

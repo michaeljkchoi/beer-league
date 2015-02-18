@@ -1,14 +1,17 @@
 class GoalsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!
   before_action :set_goal, only: [:edit, :update, :destroy]
 
   def new
     @game = Game.find(params[:game_id])
     @goal = Goal.new
+    @teams = @game.teams
+    @players = @game.players
   end
 
   def edit
-    @game = Game.find(params[:game_id])
+    @teams = @goal.game.teams
+    @players = @goal.game.players
   end
 
   def create
@@ -24,7 +27,7 @@ class GoalsController < ApplicationController
 
   def update
     if @goal.update(goal_params)
-      redirect_to @goal, notice: 'Goal was successfully updated.'
+      redirect_to @goal.game, notice: 'Goal was successfully updated.'
     else
       render :edit
     end
@@ -32,7 +35,7 @@ class GoalsController < ApplicationController
 
   def destroy
     @goal.destroy
-    redirect_to goals_url, notice: 'Goal was successfully destroyed.'
+    redirect_to game_url(@goal.game), notice: 'Goal was successfully destroyed.'
   end
 
   private

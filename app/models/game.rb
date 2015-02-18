@@ -3,6 +3,8 @@ class Game < ActiveRecord::Base
   belongs_to :home_team, class_name: 'Team', foreign_key: 'home_team_id'
   belongs_to :away_team, class_name: 'Team', foreign_key: 'away_team_id'
 
+  has_many :lineups, dependent: :destroy
+  has_many :players, through: :lineups
   has_many :goals
 
   validates :home_team, presence: true
@@ -34,9 +36,5 @@ class Game < ActiveRecord::Base
 
   def teams
     [home_team, away_team]
-  end
-
-  def players
-    [home_team.players, away_team.players].flatten!
   end
 end

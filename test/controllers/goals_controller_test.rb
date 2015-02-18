@@ -1,32 +1,28 @@
 require 'test_helper'
+include Devise::TestHelpers
 
 class GoalsControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:one)
     @goal = goals(:one)
-  end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:goals)
+    @game = @goal.game
   end
 
   test "should get new" do
-    get :new
+    get :new, game_id: @game.id
     assert_response :success
   end
 
   test "should create goal" do
     assert_difference('Goal.count') do
-      post :create, goal: {  }
+      post :create, goal: {
+        team_id: teams(:toronto).id,
+        scorer_id: players(:crosby).id,
+        category: 'ev'
+      }, game_id: @game.id
     end
 
-    assert_redirected_to goal_path(assigns(:goal))
-  end
-
-  test "should show goal" do
-    get :show, id: @goal
-    assert_response :success
+    assert_redirected_to game_path(assigns(:game))
   end
 
   test "should get edit" do
@@ -35,8 +31,10 @@ class GoalsControllerTest < ActionController::TestCase
   end
 
   test "should update goal" do
-    patch :update, id: @goal, goal: {  }
-    assert_redirected_to goal_path(assigns(:goal))
+    patch :update, id: @goal, goal: {
+      category: 'sh'
+    }
+    assert_redirected_to game_path(assigns(:goal).game)
   end
 
   test "should destroy goal" do
@@ -44,6 +42,6 @@ class GoalsControllerTest < ActionController::TestCase
       delete :destroy, id: @goal
     end
 
-    assert_redirected_to goals_path
+    assert_redirected_to game_path(assigns(:goal).game)
   end
 end

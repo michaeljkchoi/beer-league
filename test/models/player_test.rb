@@ -49,4 +49,11 @@ class PlayerTest < ActiveSupport::TestCase
     )
     assert_not_equal players(:crosby).slug, impostor.slug, 'Slugs must be unique'
   end
+
+  test 'reserves class method' do
+    reserves = Player.reserves
+
+    assert_equal 1, reserves.count
+    assert_includes reserves, players(:gretzky)
+  end
 end

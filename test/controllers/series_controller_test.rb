@@ -1,7 +1,9 @@
 require 'test_helper'
+include Devise::TestHelpers
 
 class SeriesControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:one)
     @series = series(:twentyfourteen)
   end
 

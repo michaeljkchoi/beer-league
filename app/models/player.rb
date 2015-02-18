@@ -7,6 +7,9 @@ class Player < ActiveRecord::Base
   has_many :rosters
   has_many :teams, through: :rosters
   has_many :series, through: :teams
+
+  has_many :lineups, dependent: :destroy
+  has_many :games, through: :lineups
   has_many :goals
 
   def full_name
@@ -18,5 +21,9 @@ class Player < ActiveRecord::Base
       :full_name,
       [:full_name, :number]
     ]
+  end
+
+  def self.reserves
+    where(reserve: true)
   end
 end

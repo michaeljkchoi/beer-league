@@ -1,7 +1,9 @@
 require 'test_helper'
+include Devise::TestHelpers
 
 class PlayersControllerTest < ActionController::TestCase
   setup do
+    sign_in users(:one)
     @player = players(:crosby)
   end
 

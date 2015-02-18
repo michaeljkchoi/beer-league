@@ -29,7 +29,6 @@
         %td= goal.primary_assister.try(:full_name)
         %td= goal.secondary_assister.try(:full_name)
         %td
-          = link_to 'View', goal, class: 'btn btn-default btn-xs'
           = link_to 'Edit', 
             edit_goal_path(goal), 
             class: 'btn btn-default btn-xs'

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150205063020) do
+ActiveRecord::Schema.define(version: 20150218064608) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -55,6 +55,18 @@ ActiveRecord::Schema.define(version: 20150205063020) do
   add_index "goals", ["scorer_id"], name: "index_goals_on_scorer_id", using: :btree
   add_index "goals", ["secondary_assister_id"], name: "index_goals_on_secondary_assister_id", using: :btree
   add_index "goals", ["team_id"], name: "index_goals_on_team_id", using: :btree
+
+  create_table "lineups", force: true do |t|
+    t.integer  "player_id"
+    t.integer  "game_id"
+    t.integer  "team_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "lineups", ["game_id"], name: "index_lineups_on_game_id", using: :btree
+  add_index "lineups", ["player_id"], name: "index_lineups_on_player_id", using: :btree
+  add_index "lineups", ["team_id"], name: "index_lineups_on_team_id", using: :btree
 
   create_table "players", force: true do |t|
     t.string   "first_name"

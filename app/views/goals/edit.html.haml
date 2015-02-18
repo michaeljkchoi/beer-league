@@ -1,7 +1,5 @@
-%h1 Editing goal
+%h1 Edit Goal
 
 = render 'form'
 
-= link_to 'Show', @goal
-\|
-= link_to 'Back', goals_path
+= link_to 'Back', game_path(@goal.game), class: 'btn btn-default'
