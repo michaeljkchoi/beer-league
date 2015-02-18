@@ -1,0 +1,15 @@
+.row
+  .col-sm-6.col-sm-offset-3
+    = simple_form_for resource, as: resource_name, url: session_path(resource_name) do |f|
+      .panel.panel-default
+        .panel-heading
+          %h2 Log In
+
+        .panel-body
+          = f.input :email, required: false, autofocus: true
+          = f.input :password, required: false
+          = f.input :remember_me, as: :boolean if devise_mapping.rememberable?
+
+        .panel-footer
+          = f.button :submit, 'Log in'
+          = render 'devise/shared/links'
