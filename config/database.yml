@@ -17,6 +17,6 @@ test:
 production:
   <<: *default
   socket: /var/run/mysqld/mysqld.sock
-  database: rails
+  database: beer_league_production
   username: root
   password: <%= ENV['BEER_LEAGUE_DATABASE_PASSWORD'] %>
