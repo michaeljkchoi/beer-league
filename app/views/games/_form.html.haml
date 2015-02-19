@@ -22,13 +22,13 @@
         .col-sm-6
           %h3= @teams.first.name
           = f.association :players, 
-            collection: @teams.first.players,
+            collection: @players_a,
             label_method: :full_name,
             as: :check_boxes
         .col-sm-6
           %h3= @teams.last.name
           = f.association :players, 
-            collection: @teams.last.players,
+            collection: @players_b,
             label_method: :full_name,
             as: :check_boxes
 
