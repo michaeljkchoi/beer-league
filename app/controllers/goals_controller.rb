@@ -17,6 +17,7 @@ class GoalsController < ApplicationController
   def create
     @game = Game.find(params[:game_id])
     @goal = @game.goals.new(goal_params)
+    @players = @game.players
 
     if @goal.save
       redirect_to @game, notice: 'Score!'

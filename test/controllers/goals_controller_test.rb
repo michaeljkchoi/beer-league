@@ -16,7 +16,6 @@ class GoalsControllerTest < ActionController::TestCase
   test "should create goal" do
     assert_difference('Goal.count') do
       post :create, goal: {
-        team_id: teams(:toronto).id,
         scorer_id: players(:crosby).id,
         category: 'ev'
       }, game_id: @game.id

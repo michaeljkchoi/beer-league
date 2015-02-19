@@ -1,11 +1,9 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
 one:
-  player_id: 1
-  game_id: 1
-  team_id: 1
+  player: phaneuf
+  game: one
+  team: toronto
 
 two:
-  player_id: 1
-  game_id: 1
-  team_id: 1
+  player: crosby
+  game: one
+  team: pittsburgh

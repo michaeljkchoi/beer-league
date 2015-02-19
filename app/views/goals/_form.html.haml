@@ -3,10 +3,6 @@
 
   .panel.panel-default
     .panel-body
-      = f.association :team,
-        collection: @teams,
-        include_blank: false
-
       .row
         .col-sm-6
           = f.association :scorer,
