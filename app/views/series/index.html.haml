@@ -7,7 +7,7 @@
       %th GP
       %th Status
       %th
-      %th Score
+      %th.text-center Score
       %th
       %th Start Date
       %th End Date
@@ -15,12 +15,15 @@
   %tbody
     - @series.each do |series|
       %tr
-        %td= series.name.try(:titleize)
-        %td 5
+        %td= series.name
+        %td= series.games.try(:count)
         %td Ongoing
-        %td.center-bold Tampa Bay
-        %td.center-bold 5-2
-        %td.center-bold Sam Jose
+        %td.text-center
+          %strong= series.teams.first.name
+        %td.text-center
+          %strong 5-2
+        %td.text-center
+          %strong= series.teams.last.name
         %td
           - if series.first_game.present?
             = formatted_date series.first_game.date
