@@ -18,14 +18,10 @@ class GamesController < ApplicationController
     @series = Series.find(params[:series_id])
     @game = Game.new
     @teams = @series.teams
-    @players_a = @teams.first.players + Player.reserves
-    @players_b = @teams.last.players + Player.reserves
   end
 
   def edit
     @teams = @game.series.teams
-    @players_a = @teams.first.players + Player.reserves
-    @players_b = @teams.last.players + Player.reserves
   end
 
   def create
@@ -65,7 +61,13 @@ class GamesController < ApplicationController
         :date,
         :home_team_id,
         :away_team_id,
-        player_ids: []
+        lineups_attributes: [
+          :id,
+          :_destroy,
+          :player_id,
+          :team_id,
+          :player_boolean
+        ]
       )
     end
 end

@@ -1,4 +1,4 @@
-= simple_form_for [@series, @game] do |f|
+= simple_nested_form_for [@series, @game] do |f|
   = f.error_notification
 
   .panel.panel-default
@@ -19,18 +19,19 @@
             selected: @teams.last.id
 
       .row
-        .col-sm-6
-          %h3= @teams.first.name
-          = f.association :players, 
-            collection: @players_a,
-            label_method: :full_name,
-            as: :check_boxes
-        .col-sm-6
-          %h3= @teams.last.name
-          = f.association :players, 
-            collection: @players_b,
-            label_method: :full_name,
-            as: :check_boxes
+        - @teams.each do |team|
+          .col-sm-6
+            %h3= team.name
+            - (team.players + Player.reserves).each do |player|
+              = f.simple_fields_for :lineups, player.lineups.build do |g|
+                = g.input :player_boolean, as: :boolean,
+                  label: player.full_name
+                = g.input :player_id, 
+                  input_html: { value: player.id },
+                  as: :hidden
+                = g.input :team_id, 
+                  input_html: { value: team.id }, 
+                  as: :hidden
 
     .panel-footer
       = f.button :submit
