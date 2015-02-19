@@ -4,7 +4,7 @@ class Game < ActiveRecord::Base
   belongs_to :away_team, class_name: 'Team', foreign_key: 'away_team_id'
 
   has_many :lineups, dependent: :destroy
-  accepts_nested_attributes_for :lineups, allow_destroy: true, reject_if: :unchecked?
+  accepts_nested_attributes_for :lineups, allow_destroy: true
   has_many :players, through: :lineups
   has_many :goals
 
@@ -36,9 +36,5 @@ class Game < ActiveRecord::Base
 
   def teams
     [home_team, away_team]
-  end
-
-  def unchecked?(attributed)
-    attributed['player_boolean'] != '1'
   end
 end

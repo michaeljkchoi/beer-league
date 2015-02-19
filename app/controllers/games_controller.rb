@@ -1,6 +1,7 @@
 class GamesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_game, only: [:show, :edit, :update, :destroy]
+  before_action :check_lineup_boolean, only: [:create, :update]
 
   def index
     @series = Series.find(params[:series_id])
@@ -69,5 +70,14 @@ class GamesController < ApplicationController
           :player_boolean
         ]
       )
+    end
+
+    def check_lineup_boolean
+      lineups = params[:game][:lineups_attributes]
+      if lineups.present?
+        lineups.each do |index, lineup|
+          lineup[:_destroy] = true unless lineup[:player_boolean] == '1'
+        end
+      end
     end
 end

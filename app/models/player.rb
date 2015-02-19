@@ -26,4 +26,13 @@ class Player < ActiveRecord::Base
   def self.reserves
     where(reserve: true)
   end
+
+  def get_lineup(game)
+    existing_lineup = self.lineups.find_by(game_id: game.id)
+    if existing_lineup.present?
+      existing_lineup
+    else
+      self.lineups.build
+    end
+  end
 end
