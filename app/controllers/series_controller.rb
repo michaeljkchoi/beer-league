@@ -1,6 +1,10 @@
 class SeriesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :show, :latest]
   before_action :set_series, only: [:show, :edit, :update, :destroy]
+
+  def latest
+    redirect_to Series.last
+  end
 
   def index
     @series = Series.all.order(created_at: :desc)

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   resources :series, shallow: true do
+    get :latest, on: :collection
     resources :teams
     resources :games do
       post 'close', on: :member
@@ -10,5 +11,5 @@ Rails.application.routes.draw do
   resources :players
 
   devise_for :users
-  root 'series#index'
+  root 'series#latest'
 end
