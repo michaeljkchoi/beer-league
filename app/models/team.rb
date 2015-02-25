@@ -10,4 +10,8 @@ class Team < ActiveRecord::Base
   belongs_to :captain, class_name: 'Player'
 
   validates :name, uniqueness: { scope: :series_id }, presence: true
+
+  def available_players
+    (self.players + Player.reserves).uniq
+  end
 end
