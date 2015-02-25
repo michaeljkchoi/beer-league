@@ -23,7 +23,7 @@
           .col-sm-6
             %h3= team.name
             - team.available_players.each do |player|
-              = f.simple_fields_for :lineups, player.get_lineup(@game) do |g|
+              = f.simple_fields_for :lineups, player.get_lineup(@game, team) do |g|
                 = g.input :player_boolean, as: :boolean,
                   label: player.full_name
                 = g.input :player_id, 

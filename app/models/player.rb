@@ -27,8 +27,8 @@ class Player < ActiveRecord::Base
     where(reserve: true)
   end
 
-  def get_lineup(game)
-    existing_lineup = self.lineups.find_by(game_id: game.id)
+  def get_lineup(game, team)
+    existing_lineup = self.lineups.find_by(game_id: game.id, team_id: team.id)
     if existing_lineup.present?
       existing_lineup
     else
