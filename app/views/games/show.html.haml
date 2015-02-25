@@ -48,4 +48,4 @@
 %hr
 - if current_user.present?
   = link_to 'Edit', edit_game_path(@game), class: 'btn btn-default'
-= link_to 'Back', series_games_path(@series), class: 'btn btn-default'
+= link_to 'Back', @series, class: 'btn btn-default'

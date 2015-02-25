@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   resources :series, shallow: true do
     get :latest, on: :collection
     resources :teams
-    resources :games do
+    resources :games, except: [:index] do
       post 'close', on: :member
       resources :goals, only: [:new, :create, :edit, :update, :destroy]
     end

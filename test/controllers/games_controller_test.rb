@@ -8,12 +8,6 @@ class GamesControllerTest < ActionController::TestCase
     @series = @game.series
   end
 
-  test "should get index" do
-    get :index, series_id: @series.id
-    assert_response :success
-    assert_not_nil assigns(:games)
-  end
-
   test "should get new" do
     get :new, series_id: @series.id
     assert_response :success

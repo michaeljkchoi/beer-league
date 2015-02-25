@@ -1,5 +1,5 @@
 class GamesController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: :show
   before_action :set_game, only: [:show, :edit, :update, :destroy, :close]
   before_action :check_lineup_boolean, only: [:create, :update]
 
@@ -9,11 +9,6 @@ class GamesController < ApplicationController
     else
       redirect_to @game, alert: 'Game could not be closed.'
     end
-  end
-
-  def index
-    @series = Series.find(params[:series_id])
-    @games = @series.games
   end
 
   def show
