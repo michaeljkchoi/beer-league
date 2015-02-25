@@ -32,7 +32,9 @@
         %td
         %td
           = link_to 'View', series, class: 'btn btn-default btn-xs'
-          = link_to 'Edit', edit_series_path(series), class: 'btn btn-default btn-xs'
-          = link_to 'Delete', series, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'
+          - if current_user.present?
+            = link_to 'Edit', edit_series_path(series), class: 'btn btn-default btn-xs'
+            = link_to 'Delete', series, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs'
 
-= link_to 'New Series', new_series_path, class: 'btn btn-default'
+- if current_user.present?
+  = link_to 'New Series', new_series_path, class: 'btn btn-default'

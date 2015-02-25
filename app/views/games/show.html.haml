@@ -17,7 +17,8 @@
       %th Goal Scorer
       %th Assist
       %th Assist
-      %th Actions
+      - if current_user.present?
+        %th Actions
   %tbody
     - @game.goals.each_with_index do |goal, i|
       %tr
@@ -28,16 +29,19 @@
         %td= goal.scorer.full_name
         %td= goal.primary_assister.try(:full_name)
         %td= goal.secondary_assister.try(:full_name)
-        %td
-          = link_to 'Edit', 
-            edit_goal_path(goal), 
-            class: 'btn btn-default btn-xs'
-          = link_to 'Delete', goal, 
-            method: :delete, 
-            data: { confirm: 'Are you sure?' }, 
-            class: 'btn btn-danger btn-xs'
+        - if current_user.present?
+          %td
+            = link_to 'Edit', 
+              edit_goal_path(goal), 
+              class: 'btn btn-default btn-xs'
+            = link_to 'Delete', goal, 
+              method: :delete, 
+              data: { confirm: 'Are you sure?' }, 
+              class: 'btn btn-danger btn-xs'
 
-= link_to 'Record Goal', new_game_goal_path(@game), class: 'btn btn-success'
+- if current_user.present?
+  = link_to 'Record Goal', new_game_goal_path(@game), class: 'btn btn-success'
 %hr
-= link_to 'Edit', edit_game_path(@game), class: 'btn btn-default'
+- if current_user.present?
+  = link_to 'Edit', edit_game_path(@game), class: 'btn btn-default'
 = link_to 'Back', series_games_path(@series), class: 'btn btn-default'

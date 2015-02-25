@@ -1,4 +1,5 @@
 %h2= @player.full_name
 
-= link_to 'Edit', edit_player_path(@player), class: 'btn btn-default'
+- if current_user.present?
+  = link_to 'Edit', edit_player_path(@player), class: 'btn btn-default'
 = link_to 'Back', players_path, class: 'btn btn-default'

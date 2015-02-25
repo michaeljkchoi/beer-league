@@ -2,6 +2,7 @@
 
 %h3 Games
 = render 'games/games_table'
-= link_to 'New Game', new_series_game_path(@series), class: 'btn btn-default'
+- if current_user.present?
+  = link_to 'New Game', new_series_game_path(@series), class: 'btn btn-default'
 
 = render 'teams/teams_summary'

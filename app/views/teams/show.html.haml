@@ -7,7 +7,7 @@
       %th #
       %th Full Name
       %th Stats
-      %th
+      %th Actions
   %tbody
     - @team.players.each do |player|
       %tr
@@ -16,7 +16,9 @@
         %td stats
         %td
           = link_to 'View', player, class: 'btn btn-default btn-xs'
-          = link_to 'Edit', edit_player_path(player), class: 'btn btn-default btn-xs'
+          - if current_user.present?
+            = link_to 'Edit', edit_player_path(player), class: 'btn btn-default btn-xs'
 
-= link_to 'Add Players', edit_team_path(@team), class: 'btn btn-default'
+- if current_user.present?
+  = link_to 'Add Players', edit_team_path(@team), class: 'btn btn-default'
 = link_to 'Back', series_teams_path(@series), class: 'btn btn-default'

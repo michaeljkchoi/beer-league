@@ -2,10 +2,14 @@
 .row
   - @teams.each do |team|
     .col-sm-6
-      %h4= link_to team.name, team
+      %h4
+        = link_to team.name, team
+        - if current_user.present?
+          = link_to 'Edit', edit_team_path(team), class: 'btn btn-default btn-xs'
       %ul
         - team.players.each do |player|
           %li
             = player.full_name
             - if player.number.present?
               (#{ player.number })
+
