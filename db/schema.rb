@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150218064608) do
+ActiveRecord::Schema.define(version: 20150225050656) do
 
   create_table "friendly_id_slugs", force: true do |t|
     t.string   "slug",                      null: false
@@ -33,6 +33,7 @@ ActiveRecord::Schema.define(version: 20150218064608) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.datetime "date"
+    t.boolean  "closed",       default: false
   end
 
   add_index "games", ["away_team_id"], name: "index_games_on_away_team_id", using: :btree

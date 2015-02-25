@@ -23,7 +23,8 @@
           = link_to 'View', game, class: 'btn btn-xs btn-default'
           - if current_user.present?
             = link_to 'Edit', edit_game_path(game), class: 'btn btn-xs btn-default'
-            = link_to 'Destroy', game, 
-              method: :delete, 
-              data: { confirm: 'Are you sure?' },
-              class: 'btn btn-xs btn-danger'
+            - unless game.closed
+              = link_to 'Destroy', game, 
+                method: :delete, 
+                data: { confirm: 'Are you sure?' },
+                class: 'btn btn-xs btn-danger'

@@ -41,6 +41,10 @@
 
 - if current_user.present?
   = link_to 'Record Goal', new_game_goal_path(@game), class: 'btn btn-success'
+  = link_to 'Close Game', 
+    close_game_path(@game), 
+    method: :post,
+    class: 'btn btn-danger pull-right'
 %hr
 - if current_user.present?
   = link_to 'Edit', edit_game_path(@game), class: 'btn btn-default'
