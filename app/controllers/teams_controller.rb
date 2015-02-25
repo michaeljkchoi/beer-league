@@ -13,12 +13,12 @@ class TeamsController < ApplicationController
 
   def edit
     @series = @team.series
-    @players = @series.available_players
+    @players = @series.players
   end
 
   def update
     if @team.update(team_params)
-      redirect_to @team, notice: 'Team was successfully updated.'
+      redirect_to @team.series, notice: 'Team was successfully updated.'
     else
       render :edit
     end

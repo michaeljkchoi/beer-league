@@ -31,7 +31,7 @@ class TeamsControllerTest < ActionController::TestCase
     patch :update, id: @team, team: {
       name: 'Vancouver Canucks'
     }
-    assert_redirected_to team_path(assigns(:team))
+    assert_redirected_to series_path(assigns(:team).series)
   end
 
   test "should destroy team" do

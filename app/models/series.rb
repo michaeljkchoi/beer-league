@@ -7,10 +7,6 @@ class Series < ActiveRecord::Base
   has_many :players, through: :teams
   has_many :games
 
-  def available_players
-    Player.all - players
-  end
-
   def first_game
     games.first
   end
