@@ -14,4 +14,12 @@ class Series < ActiveRecord::Base
   def first_game
     games.first
   end
+
+  def wins_by(team)
+    w = 0
+    games.each do |game|
+      w += 1 if game.won_by? team
+    end
+    w
+  end
 end

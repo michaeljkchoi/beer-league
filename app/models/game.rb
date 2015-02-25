@@ -34,6 +34,11 @@ class Game < ActiveRecord::Base
     goals.where(team: team).count
   end
 
+  def won_by?(team)
+    team_goals = goals_for team
+    team_goals != 0 and team_goals >= goals.count
+  end
+
   def teams
     [home_team, away_team]
   end

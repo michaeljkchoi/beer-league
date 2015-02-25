@@ -21,7 +21,10 @@
         %td.text-center
           %strong= series.teams.first.name
         %td.text-center
-          %strong 5-2
+          %strong
+            = series.wins_by series.teams.first
+            \-
+            = series.wins_by series.teams.last
         %td.text-center
           %strong= series.teams.last.name
         %td
