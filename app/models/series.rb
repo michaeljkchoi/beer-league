@@ -17,7 +17,7 @@ class Series < ActiveRecord::Base
 
   def wins_by(team)
     w = 0
-    games.each do |game|
+    games.where(closed: true).each do |game|
       w += 1 if game.won_by? team
     end
     w

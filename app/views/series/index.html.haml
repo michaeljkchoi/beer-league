@@ -16,7 +16,7 @@
     - @series.each do |series|
       %tr
         %td= series.name
-        %td= series.games.try(:count)
+        %td= series.games.where(closed: true).try(:count)
         %td Ongoing
         %td.text-center
           %strong= series.teams.first.name

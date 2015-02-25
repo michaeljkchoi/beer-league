@@ -36,7 +36,8 @@ class Game < ActiveRecord::Base
 
   def won_by?(team)
     team_goals = goals_for team
-    team_goals != 0 and team_goals >= goals.count
+    other_goals = goals.count - team_goals
+    team_goals != 0 and team_goals >= other_goals
   end
 
   def teams
