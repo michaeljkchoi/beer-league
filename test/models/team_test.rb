@@ -32,9 +32,10 @@ class TeamTest < ActiveSupport::TestCase
   test 'available players method' do
     team = teams(:toronto)
 
-    assert_equal 2, team.available_players.count
+    assert_equal 3, team.available_players.count
     assert_includes team.available_players, players(:gretzky)
     assert_includes team.available_players, players(:phaneuf)
+    assert_includes team.available_players, players(:bernier)
     assert_not_includes team.available_players, players(:crosby)
   end
 end

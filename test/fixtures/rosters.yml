@@ -5,3 +5,7 @@ one:
 two:
   team: pittsburgh
   player: crosby
+
+three:
+  team: toronto
+  player: bernier

@@ -24,3 +24,13 @@ gretzky:
   phone_number: 111-222-3333
   reserve: true
   slug: wayne-gretzky
+
+bernier:
+  first_name: Jonathan
+  last_name: Bernier
+  number: 45
+  email: jon@bernier.com
+  phone_number: 111-222-3333
+  reserve: false
+  goalie: true
+  slug: jonathan-bernier

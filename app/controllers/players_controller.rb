@@ -52,6 +52,7 @@ class PlayersController < ApplicationController
         :number,
         :email,
         :phone_number,
+        :goalie,
         :reserve
       )
     end
