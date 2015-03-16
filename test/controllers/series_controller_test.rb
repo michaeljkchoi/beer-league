@@ -7,6 +7,12 @@ class SeriesControllerTest < ActionController::TestCase
     @series = series(:twentyfourteen)
   end
 
+  test "should get latest" do
+    get :latest
+    assert_response :redirect
+    assert_redirected_to @series
+  end
+
   test "should get index" do
     get :index
     assert_response :success

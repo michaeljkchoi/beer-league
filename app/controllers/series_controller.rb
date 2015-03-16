@@ -3,7 +3,11 @@ class SeriesController < ApplicationController
   before_action :set_series, only: [:show, :edit, :update, :destroy]
 
   def latest
-    redirect_to Series.last
+    if Series.all.present?
+      redirect_to Series.last
+    else
+      redirect_to new_series_path
+    end
   end
 
   def index
