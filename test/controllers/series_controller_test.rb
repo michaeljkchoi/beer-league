@@ -29,8 +29,8 @@ class SeriesControllerTest < ActionController::TestCase
       post :create, series: {
         name: '2012 Series',
         teams_attributes: {
-          team: { name: 'Boston Bruins' },
-          team: { name: 'Washington Capitals' }
+          home_team: { name: 'Boston Bruins' },
+          away_team: { name: 'Washington Capitals' }
         }
       }
     end
