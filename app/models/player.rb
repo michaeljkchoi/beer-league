@@ -35,4 +35,8 @@ class Player < ActiveRecord::Base
       self.lineups.build
     end
   end
+
+  def position
+    self.goalie ? "goalie" : "player"
+  end
 end

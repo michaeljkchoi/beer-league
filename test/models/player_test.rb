@@ -56,4 +56,12 @@ class PlayerTest < ActiveSupport::TestCase
     assert_equal 1, reserves.count
     assert_includes reserves, players(:gretzky)
   end
+
+  test "position instance method" do
+    player = players(:crosby)
+    assert_equal "player", player.position
+
+    goalie = players(:bernier)
+    assert_equal "goalie", goalie.position
+  end
 end

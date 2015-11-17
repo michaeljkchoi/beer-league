@@ -6,6 +6,7 @@
       %th First Name
       %th Last Name
       %th Number
+      %th Position
       %th Actions
       
   %tbody
@@ -14,6 +15,7 @@
         %td= player.first_name
         %td= player.last_name
         %td= player.number
+        %td= player.position.titleize
         %td
           = link_to 'View', player, class: 'btn btn-default btn-xs'
           - if current_user.present?

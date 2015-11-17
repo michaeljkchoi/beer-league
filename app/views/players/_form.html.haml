@@ -3,11 +3,20 @@
 
   .panel.panel-default
     .panel-body
-      = f.input :first_name, autofocus: true
-      = f.input :last_name
-      = f.input :email
-      = f.input :phone_number
-      = f.input :number
+      .row
+        .col-sm-6
+          = f.input :first_name, autofocus: true
+        .col-sm-6
+          = f.input :last_name
+
+      .row
+        .col-sm-4
+          = f.input :email
+        .col-sm-4
+          = f.input :phone_number
+        .col-sm-4
+          = f.input :number, label: "Player number"
+
       = f.input :goalie, label: 'Is this player a goalie?'
       = f.input :reserve, label: 'Is this player a reserve?'
 
